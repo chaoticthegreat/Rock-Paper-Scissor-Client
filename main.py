@@ -68,12 +68,12 @@ while True:
         otherchoice = done.json()["0"]
         type(r["match"]+" picked "+otherchoice)
         if otherchoice == choice:
-          type("Tie!")
+          type(f"{yellow}Tie!{reset}")
         elif logic[choice] == otherchoice:
-          type("You win!")
+          type(f"{green}You win!{reset}")
           totalwins+=1
         elif logic[otherchoice] == choice:
-          type("You lose!")
+          type(f"{red}You lose!{reset}")
         break
     if done.json()["1"] == "true" or i == 3:
       breaktrue = True
