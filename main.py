@@ -16,15 +16,15 @@ def type(string:str):
   print()
 def alive(username):
   while not quit:
-    requests.post("https://Server-for-Online-Rock-Paper-Scissors.proryan.repl.co/check", json = {"username":username})
+    requests.post("https://Server-for-Online-Rock-Paper-Scissors.chaoticchaosthegreat.repl.co/check", json = {"username":username})
     time.sleep(4)
 username = input("What's your username:\n")
 Thread(target = alive, daemon = True, args = (username,)).start()
 type("Please wait while we match you up with someone!\nFor a quicker match up, call a partner to play on a different computer!")
-r = requests.get(f"https://Server-for-Online-Rock-Paper-Scissors.proryan.repl.co/{username}/false").json()
+r = requests.get(f"https://Server-for-Online-Rock-Paper-Scissors.chaoticchaosthegreat.repl.co/{username}/false").json()
 while r["match"] == "nothing":
   time.sleep(2)
-  r = requests.get(f"https://Server-for-Online-Rock-Paper-Scissors.proryan.repl.co/{username}/true", json = {"server":r["server"]}).json()
+  r = requests.get(f"https://Server-for-Online-Rock-Paper-Scissors.chaoticchaosthegreat.repl.co/{username}/true", json = {"server":r["server"]}).json()
 while True:
   server = int(r["server"])
   type("Your server id is "+str(server))
@@ -46,11 +46,11 @@ while True:
       else:
         type("Please pick a valid option!")
         continue
-    requests.post("https://Server-for-Online-Rock-Paper-Scissors.proryan.repl.co/server", json = {"round":i,"username":username,"choice":choice,"server":server})
+    requests.post("https://Server-for-Online-Rock-Paper-Scissors.chaoticchaosthegreat.repl.co/server", json = {"round":i,"username":username,"choice":choice,"server":server})
     type("Waiting for the other player to answer...")
     kicked = False
     while True:
-      done = requests.get("https://Server-for-Online-Rock-Paper-Scissors.proryan.repl.co/server", json = {"round":i, "username":username,"server":server})
+      done = requests.get("https://Server-for-Online-Rock-Paper-Scissors.chaoticchaosthegreat.repl.co/server", json = {"round":i, "username":username,"server":server})
       if done.text == "Nothing":
           time.sleep(2)
       elif done.text == "kicked":
